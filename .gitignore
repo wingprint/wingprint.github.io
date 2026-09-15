@@ -1,0 +1,7 @@
+.DS_Store
+._*
+__MACOSX/
+Thumbs.db
+
+# heavy source clips — ship the converted mp4/webm instead
+*.gif
