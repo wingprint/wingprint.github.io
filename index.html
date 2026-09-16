@@ -15,11 +15,9 @@
         assets/wing-01.jpg … wing-06.jpg   gallery, landscape ~8:5        [added]
         assets/og.jpg                social-share preview, 1200×630        [optional]
      Use .jpg / .webp (gif for intro), sRGB, keep each reasonably small.
-  2. LINKS   — search & replace these three placeholders throughout:
-        #HF_SCANS      → Hugging Face link, wing-scan collection
-        #HF_BATID      → Hugging Face link, BatID
+  2. LINKS   — datasets (Hugging Face) and both GitHub repos are wired up.
+     Still to fill in:
         #PAPER_URL     → arXiv / journal / PDF link
-        #CODE_URL      → GitHub repository
   3. NUMBERS — the Results section still holds current-draft figures;
      swap them for the final manuscript values before submission.
   4. AUTHORS — point each author link to their profile if desired.
@@ -225,12 +223,13 @@
   .dset .figs .n{font-size:30px;font-weight:400;line-height:1}
   .dset .figs .l{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-top:6px}
   .dset .dl{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
-  .code-block{margin-top:clamp(24px,3vw,40px);border:1.5px solid var(--ink);background:var(--paper-2);
-    padding:clamp(24px,3vw,32px);display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-  .code-block .cat{color:var(--blue)}
-  .code-block h3{margin:10px 0 8px;font-size:clamp(21px,2.4vw,27px)}
-  .code-block p{margin:0;color:var(--ink-dim);font-size:16px;max-width:60ch}
-  .code-block .btn{flex-shrink:0}
+  .repos{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,40px);margin-top:clamp(24px,3vw,40px)}
+  @media (max-width:860px){.repos{grid-template-columns:1fr}}
+  .repo{border:1.5px solid var(--ink);background:var(--paper-2);padding:30px 28px;display:flex;flex-direction:column}
+  .repo .cat{color:var(--blue)}
+  .repo h3{margin:10px 0 10px;font-size:clamp(21px,2.4vw,27px)}
+  .repo p{color:var(--ink-dim);font-size:16px;margin-bottom:24px}
+  .repo .btn{margin-top:auto;align-self:flex-start}
   /* BEHAVIOURAL CLIP */
   .approach-clip{margin:clamp(28px,4vw,42px) auto 0;max-width:720px}
   .approach-clip .plate-media{aspect-ratio:4/3}
@@ -475,7 +474,7 @@
           <div><div class="n">90</div><div class="l">Recaptured</div></div>
         </div>
         <div class="dl">
-          <a class="btn btn-primary" href="https://huggingface.co/datasets/j-dey/bats-wing-print-scans">Hugging Face <span class="arw">→</span></a>
+          <a class="btn btn-primary" href="https://huggingface.co/datasets/j-dey/bats-wing-print-scans" target="_blank" rel="noopener">Hugging Face <span class="arw">→</span></a>
         </div>
       </div>
       <div class="dset reveal">
@@ -488,18 +487,24 @@
           <div><div class="n">750²</div><div class="l">Resolution (px)</div></div>
         </div>
         <div class="dl">
-          <a class="btn btn-primary" href="https://huggingface.co/datasets/j-dey/bats-wing-print-free-flight">Hugging Face <span class="arw">→</span></a>
+          <a class="btn btn-primary" href="https://huggingface.co/datasets/j-dey/bats-wing-print-free-flight" target="_blank" rel="noopener">Hugging Face <span class="arw">→</span></a>
         </div>
       </div>
     </div>
 
-    <div class="code-block reveal">
-      <div>
-        <span class="cat">Code</span>
-        <h3>One repository for everything</h3>
-        <p>Re-identification code for both datasets, the scanner build manual and the control software.</p>
+    <div class="repos">
+      <div class="repo reveal">
+        <span class="cat">Code · analysis</span>
+        <h3>WingPrint-Experiments</h3>
+        <p>The re-identification pipelines for both datasets: RootSIFT keypoint matching for the wing scans, and the deep metric-learning models for the in-flight data, with the evaluation protocols used in the paper.</p>
+        <a class="btn btn-primary" href="https://github.com/wingprint/WingPrint-Experiments" target="_blank" rel="noopener">GitHub <span class="arw">→</span></a>
       </div>
-      <a class="btn btn-primary" href="#CODE_URL">GitHub <span class="arw">→</span></a>
+      <div class="repo reveal">
+        <span class="cat">Code · open hardware</span>
+        <h3>BatWingScanner</h3>
+        <p>The scanner itself: acquisition and control software plus the build documentation, so the device can be rebuilt from off-the-shelf components at low cost.</p>
+        <a class="btn btn-primary" href="https://github.com/wingprint/BatWingScanner" target="_blank" rel="noopener">GitHub <span class="arw">→</span></a>
+      </div>
     </div>
   </div>
 </section>
@@ -594,7 +599,7 @@
   <div class="wrap foot-in">
     <a href="#top" class="brand">Wing<span class="s">Print</span></a>
     <p>Bat re-identification</p>
-    <p><a href="#PAPER_URL">Paper</a> · <a href="#datasets">Data</a> · <a href="#CODE_URL">Code</a></p>
+    <p><a href="#PAPER_URL">Paper</a> · <a href="#datasets">Data</a> · <a href="https://github.com/wingprint/WingPrint-Experiments" target="_blank" rel="noopener">Experiments</a> · <a href="https://github.com/wingprint/BatWingScanner" target="_blank" rel="noopener">Scanner</a></p>
   </div>
 </footer>
 
